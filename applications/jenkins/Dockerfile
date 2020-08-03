@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.136
+FROM jenkins/jenkins:2.176.4
 USER root
 
 #Pre-Install Jenkins Plugins
@@ -18,6 +18,6 @@ echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/so
 apt-get update && apt-get install -y kubectl
 
 # Grant jenkins user group access to /var/run/docker.sock
-RUN addgroup --gid 1001 dsock
-RUN gpasswd -a jenkins dsock 
+##RUN addgroup --gid 999 docker
+RUN gpasswd -a jenkins docker
 USER jenkins

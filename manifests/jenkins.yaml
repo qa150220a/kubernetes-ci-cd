@@ -84,7 +84,7 @@ spec:
 
 ---
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins
@@ -93,6 +93,9 @@ metadata:
 spec:
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app: jenkins
   template:
     metadata:
       labels:
@@ -119,12 +122,12 @@ spec:
         securityContext:
           privileged: true
         volumeMounts:
-        - name: kubeconfig
-          mountPath: /var/jenkins_home/.kube
         - name: docker
           mountPath: /var/run/docker.sock
         - name: jenkins-persistent-storage
           mountPath: /var/jenkins_home
+        - name: kubeconfig
+          mountPath: /var/jenkins_home/.kube
         ports:
         - containerPort: 8080
           name: jenkins

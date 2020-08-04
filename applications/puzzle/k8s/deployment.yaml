@@ -88,16 +88,21 @@ spec:
     tier: mongo
   type: NodePort
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
  name: puzzle
+ annotations:
+   nginx.ingress.kubernetes.io/enable-cors: "true"
+   nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+   nginx.ingress.kubernetes.io/cors-allow-origin: "http://kr8sswordz.10.244.1.51.xip.io"
+   nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
 spec:
   backend:
     serviceName: puzzle
     servicePort: 3000
   rules:
-  - host: puzzle.192.168.99.100.xip.io
+  - host: puzzle.10.244.1.51.xip.io 
     http:
       paths:
       - path: /

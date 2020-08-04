@@ -61,7 +61,7 @@ spec:
     serviceName: monitor-scale
     servicePort: 3001
   rules:
-  - host: monitor-scale.192.168.99.100.xip.io
+  - host: monitor-scale.10.244.1.51.xip.io
     http:
       paths:
       - path: /

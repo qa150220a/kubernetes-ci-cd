@@ -15,4 +15,5 @@ COPY up.sh /up.sh
 COPY down.sh /down.sh
 
 EXPOSE 3000
+ENV NODE_DEBUG=cluster,net,http,fs,tls,module,timers
 CMD [ "node", "." ]

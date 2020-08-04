@@ -146,3 +146,20 @@ spec:
       - name: jenkins-persistent-storage
         persistentVolumeClaim:
           claimName: jenkins-claim
+---
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: jenkins-ingress
+spec:
+  rules:
+          #  - host: httpd.example.com
+          #  - host: httpd.10.244.1.58.xip.io 
+  - host: jenkins.10.244.1.51.xip.io
+    http:
+      paths:
+      - backend:
+          serviceName: jenkins
+          servicePort: 80
+

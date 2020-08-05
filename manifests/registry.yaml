@@ -107,18 +107,18 @@ spec:
           claimName: registry-claim
 ---
 
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: registry-ingress
-spec:
-  rules:
-          #  - host: httpd.example.com
-          #  - host: httpd.10.244.1.58.xip.io 
-  - host: registry.10.244.1.51.xip.io
-    http:
-      paths:
-      - backend:
-          serviceName: registry-ui
-          servicePort: 8080
+#apiVersion: networking.k8s.io/v1beta1
+#kind: Ingress
+#metadata:
+#  name: registry-ingress
+#spec:
+#  rules:
+#          #  - host: httpd.example.com
+#          #  - host: httpd.10.244.1.58.xip.io 
+#  - host: registry.10.244.1.51.xip.io
+#    http:
+#      paths:
+#      - backend:
+#          serviceName: registry-ui
+#          servicePort: 8080
 
